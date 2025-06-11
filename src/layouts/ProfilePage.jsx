@@ -1,10 +1,14 @@
-// pages/ProfilePage.jsx
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowLeft, FaSignOutAlt, FaBriefcase, FaPen } from "react-icons/fa";
+import { motion } from "framer-motion";
+import {
+  FaArrowLeft,
+  FaSignOutAlt,
+  FaBriefcase,
+  FaPen,
+} from "react-icons/fa";
 import { IoIosArrowForward } from "react-icons/io";
-import humanlogo from "../assets/images/humanlogo.svg"; // Adjust path
+import humanlogo from "../assets/images/humanlogo.svg";
 import lotus from "../assets/images/lotus.svg";
 import {
   MdPersonOutline,
@@ -19,81 +23,53 @@ import {
   MdSettings,
 } from "react-icons/md";
 
-
-
 const options = [
-  {
-    optionimage: <MdPersonOutline className="text-2xl text-gray-500" />,
-    optionheading: "Profile",
-    subheading: "Manage your profile",
-  },
-  {
-    optionimage: <MdLocationOn className="text-2xl text-gray-500" />,
-    optionheading: "My Area",
-    subheading: "Explore your region",
-  },
-  {
-    optionimage: <MdNotificationsNone className="text-2xl text-gray-500" />,
-    optionheading: "Notifications",
-    subheading: "View recent updates",
-  },
-  {
-    optionimage: <MdFolderOpen className="text-2xl text-gray-500" />,
-    optionheading: "My Contributions",
-    subheading: "Posts you've shared",
-  },
-  {
-    optionimage: <MdNoteAlt className="text-2xl text-gray-500" />,
-    optionheading: "My Notes",
-    subheading: "Your saved notes",
-  },
-  {
-    optionimage: <MdBarChart className="text-2xl text-gray-500" />,
-    optionheading: "My Scores",
-    subheading: "Track your performance",
-  },
-  {
-    optionimage: <MdPhone className="text-2xl text-gray-500" />,
-    optionheading: "Contact",
-    subheading: "Reach out to us",
-  },
-  {
-    optionimage: <MdFeedback className="text-2xl text-gray-500" />,
-    optionheading: "Feedback",
-    subheading: "Help us improve",
-  },
-  {
-    optionimage: <MdSupportAgent className="text-2xl text-gray-500" />,
-    optionheading: "Support",
-    subheading: "Get assistance",
-  },
-  {
-    optionimage: <MdSettings className="text-2xl text-gray-500" />,
-    optionheading: "Settings",
-    subheading: "Customize your experience",
-  },
+  { optionimage: <MdPersonOutline className="text-2xl text-gray-500" />, optionheading: "Profile", subheading: "Manage your profile" },
+  { optionimage: <MdLocationOn className="text-2xl text-gray-500" />, optionheading: "My Area", subheading: "Explore your region" },
+  { optionimage: <MdNotificationsNone className="text-2xl text-gray-500" />, optionheading: "Notifications", subheading: "View recent updates" },
+  { optionimage: <MdFolderOpen className="text-2xl text-gray-500" />, optionheading: "My Contributions", subheading: "Posts you've shared" },
+  { optionimage: <MdNoteAlt className="text-2xl text-gray-500" />, optionheading: "My Notes", subheading: "Your saved notes" },
+  { optionimage: <MdBarChart className="text-2xl text-gray-500" />, optionheading: "My Scores", subheading: "Track your performance" },
+  { optionimage: <MdPhone className="text-2xl text-gray-500" />, optionheading: "Contact", subheading: "Reach out to us" },
+  { optionimage: <MdFeedback className="text-2xl text-gray-500" />, optionheading: "Feedback", subheading: "Help us improve" },
+  { optionimage: <MdSupportAgent className="text-2xl text-gray-500" />, optionheading: "Support", subheading: "Get assistance" },
+  { optionimage: <MdSettings className="text-2xl text-gray-500" />, optionheading: "Settings", subheading: "Customize your experience" },
 ];
 
-
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i = 1) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.1, duration: 0.6, ease: "easeOut" },
+  }),
+};
 
 const ProfilePage = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // add your logout logic here
     console.log("Logged out");
   };
 
   return (
-    <div className=" absolute z-10  min-h-screen w-full mt-0 bg-[#FAFAFA] flex flex-col ">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="absolute z-10 min-h-screen w-full mt-0 bg-[#FAFAFA] flex flex-col"
+    >
       {/* Top Section */}
-      <div className="bg-[#FEEBCA] rounded-b-3xl p-6 relative">
+      <motion.div
+        className="bg-[#FEEBCA] rounded-b-3xl p-6 relative"
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut" }}
+      >
         <img
           src={lotus}
           alt="Lotus"
           className="absolute bottom-0 right-0 md:right-5 h-24 md:h-40"
         />
-        {/* Back & Logout Buttons */}
         <div className="flex justify-between items-center">
           <div
             onClick={() => navigate(-1)}
@@ -127,22 +103,25 @@ const ProfilePage = () => {
             Karyasamiti Sadasya
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Options */}
+      {/* Option Cards */}
       <div className="flex-1 px-5 py-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {options.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
               className="flex justify-between items-center bg-white rounded-lg p-2 shadow-xl hover:bg-gray-50 cursor-pointer"
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              custom={idx}
             >
               <div className="flex items-center gap-4 w-full">
                 <div className="flex w-[17%] rounded h-full p-3 bg-[#fcf4f3] justify-center items-center">
                   <div className="text-2xl">{item.optionimage}</div>
                 </div>
-
-                <div className="flex flex-col w-full ">
+                <div className="flex flex-col w-full">
                   <h3 className="text-sm text-RED font-bold">
                     {item.optionheading}
                   </h3>
@@ -150,21 +129,26 @@ const ProfilePage = () => {
                 </div>
               </div>
               <IoIosArrowForward className="text-gray-400 text-xl" />
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
       {/* Logout Button */}
-      <div className="px-5 pb-6 flex justify-center items-center mb-10 md:mb-0">
+      <motion.div
+        className="px-5 pb-6 flex justify-center items-center mb-10 md:mb-0"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1, duration: 0.6 }}
+      >
         <button
           onClick={handleLogout}
-          className=" bg-RED w-full md:w-auto text-white   py-3 px-10 rounded-md font-semibold hover:bg-red-600"
+          className="bg-RED w-full md:w-auto text-white py-3 px-10 rounded-md font-semibold hover:bg-red-600"
         >
           Logout
         </button>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
