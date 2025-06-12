@@ -6,6 +6,6 @@ Check out the deployed project here:
 🚀 Deployment
 This project is deployed using Vercel.
 You can view it live at:
-👉 cv-dragon-task.vercel.app
+👉 [cv-dragon-task.vercel.app](https://cv-dragon-task.vercel.app/)
 
 
