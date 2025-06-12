@@ -7,6 +7,7 @@ import {
   FaBriefcase,
   FaPen,
 } from "react-icons/fa";
+import smalllotus from "../assets/images/smalllotus.svg";
 import { IoIosArrowForward } from "react-icons/io";
 import humanlogo from "../assets/images/humanlogo.svg";
 import lotus from "../assets/images/lotus.svg";
@@ -58,6 +59,12 @@ const ProfilePage = () => {
       animate={{ opacity: 1 }}
       className="absolute z-10 min-h-screen w-full mt-0 bg-[#FAFAFA] flex flex-col"
     >
+
+         <img
+              src={smalllotus}
+              alt="Lotus"
+              className="absolute top-0 left-0 h-8 md:h-9 z-20"
+            />
       {/* Top Section */}
       <motion.div
         className="bg-[#FEEBCA] rounded-b-3xl p-6 relative"
@@ -68,7 +75,7 @@ const ProfilePage = () => {
         <img
           src={lotus}
           alt="Lotus"
-          className="absolute bottom-0 right-0 md:right-5 h-24 md:h-40"
+          className="absolute bottom-0 right-0  h-24 md:h-40"
         />
         <div className="flex justify-between items-center">
           <div
@@ -122,10 +129,10 @@ const ProfilePage = () => {
                   <div className="text-2xl">{item.optionimage}</div>
                 </div>
                 <div className="flex flex-col w-full">
-                  <h3 className="text-sm text-RED font-bold">
+                  <h3 className="text-sm md:text-base text-RED font-bold">
                     {item.optionheading}
                   </h3>
-                  <p className="text-xs text-gray-500">{item.subheading}</p>
+                  <p className="text-xs md:text-md text-gray-500">{item.subheading}</p>
                 </div>
               </div>
               <IoIosArrowForward className="text-gray-400 text-xl" />

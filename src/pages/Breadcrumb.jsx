@@ -6,7 +6,7 @@ const Breadcrumb = () => {
   const displayedTasks = showAll ? taskData.tasks : taskData.tasks.slice(0, 4);
 
   return (
-    <div className=" pt-60 md:pt-76 pb-6   max-w-full px-6">
+    <div className=" pt-60 md:pt-80 pb-6   max-w-full px-6">
       {/* Header Row */}
       <div className="flex justify-between items-center mb-6">
         <div className="flex items-center gap-3">
@@ -21,7 +21,7 @@ const Breadcrumb = () => {
             {taskData.heading}
           </h1>
         </div>
-        <div className="bg-white rounded-md px-3 py-2 flex items-center gap-2 shadow">
+        <div className="bg-white rounded-md px-3 py-1 flex items-center gap-2 shadow">
           <button
             onClick={() => setShowAll(!showAll)}
             className="text-RED font-bold focus:outline-none"

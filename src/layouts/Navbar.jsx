@@ -11,6 +11,8 @@ import {
 } from "react-icons/fa";
 import humanlogo from "../../src/assets/images/humanlogo.svg";
 import lotus from "../assets/images/lotus.svg";
+import smalllotus from "../assets/images/smalllotus.svg";
+
 import rupeelogo from "../assets/images/rupeelogo.svg";
 import mainlogoi from "../assets/images/mainlogoi.svg";
 import Navoffcanvas from "./Navoffcanvas";
@@ -39,8 +41,14 @@ const Navbar = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-10 ">
+        <img
+          src={smalllotus}
+          alt="Lotus"
+          className="absolute top-0 left-0 h-8 md:h-9 z-20"
+        />
+
         {/* Top Navbar */}
-        <div className="flex items-center justify-between bg-NAVBAR px-4 py-2">
+        <div className="pt-6 flex items-center justify-between bg-NAVBAR px-4 py-2">
           {/* Left: Menu Icon */}
           <div className="flex items-center  justify-between md:justify-start  md:w-auto w-full gap-2">
             <div className="bg-white rounded-full p-2">
@@ -133,7 +141,7 @@ const Navbar = () => {
           <img
             src={lotus}
             alt="Lotus"
-            className="absolute bottom-0 right-1 md:right-5 h-28 md:h-40"
+            className="absolute bottom-0 right-0  h-28 md:h-44"
           />
 
           <div className="absolute z-50 bg-transparent w-full bottom-4 right-0  flex justify-between items-center gap-4 px-6 md:px-14">
